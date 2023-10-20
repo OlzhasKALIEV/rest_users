@@ -1,3 +1,4 @@
+import math
 import os
 
 import requests
@@ -66,6 +67,36 @@ def get_users_id(id: int, db: Session = Depends(get_db)):
     return users_id
 
 
+@app.get("/api/gender/{gender}")
+# GET: http://0.0.0.0:8000/api/gender/male?age_min=25&age_max=80&page=1&limit=2
+def get_users_gender(
+        gender: str = None,
+        age_min: int = None,
+        age_max: int = None,
+        page: int = 1,
+        limit: int = 10,
+        db: Session = Depends(get_db)
+):
+    query = db.query(User)
+
+    if gender is not None:
+        query = query.filter(User.gender == gender)
+    if age_min is not None:
+        query = query.filter(User.age >= age_min)
+    if age_max is not None:
+        query = query.filter(User.age <= age_max)
+
+    total_count = query.count()
+    total_pages = math.ceil(total_count / limit)
+
+    users = query.offset((page - 1) * limit).limit(limit).all()
+
+    if not users:
+        raise HTTPException(status_code=404, detail="There are no users with this gender")
+
+    return {"result": users, "page": page, "limit": limit, "total_pages": total_pages, "total_count": total_count}
+
+
 @app.delete("/api/users")
 # DELETE: http://0.0.0.0:8000/api/users?id=1
 def delete_users_id(id: int, db: Session = Depends(get_db)):
@@ -101,3 +132,5 @@ if __name__ == "__main__":
     import uvicorn
 
     uvicorn.run(app, host="0.0.0.0", port=8000)
+
+# uvicorn main: app - -host 0.0.0.0 - -port 8000

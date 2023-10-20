@@ -34,9 +34,17 @@ JSON:
 
 ![img.png](img/img_2.PNG)
 
+Получение данных по id
+
 GET: http://0.0.0.0:8000/api/users?id=1
 
 ![img.png](img/img_1.PNG)
+
+Получение данных с различными фильтрами и пагинацией 
+
+GET: http://0.0.0.0:8000/api/gender/male?age_min=25&age_max=80&page=1&limit=2
+
+![img.png](img/img_11.PNG)
 
 Удаления по идентификатору
 
