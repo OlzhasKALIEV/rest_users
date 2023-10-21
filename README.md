@@ -16,10 +16,13 @@
     DATABASE_URL=postgresql://postgres:12345@localhost:5432/directory
    
     DATABASE_URL_IMG=postgresql://postgres:12345@db:5432/directory
+
    
     POSTGRES_USER=postgres
+
    
     POSTGRES_PASSWORD=12345
+
    
     POSTGRES_DB=directory
     
