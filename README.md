@@ -7,19 +7,26 @@
 3. Создать файл .env в нем разместить информацию 
 
     API_AGIFY_URL=https://api.agify.io
+   
     API_GENDERIZE_URL=https://api.genderize.io
+   
     API_NATIONALIZE_URL=https://api.nationalize.io
+
     
     DATABASE_URL=postgresql://postgres:12345@localhost:5432/directory
+   
     DATABASE_URL_IMG=postgresql://postgres:12345@db:5432/directory
+   
     POSTGRES_USER=postgres
+   
     POSTGRES_PASSWORD=12345
+   
     POSTGRES_DB=directory
     
     PGADMIN_DEFAULT_EMAIL=admin@example.com
     PGADMIN_DEFAULT_PASSWORD=admin
 
-4. Запуск проекта: docker-compose up
+5. Запуск проекта: docker-compose up
 
 Создать пользователя
 
