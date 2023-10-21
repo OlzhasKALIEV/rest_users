@@ -27,6 +27,7 @@
     POSTGRES_DB=directory
     
     PGADMIN_DEFAULT_EMAIL=admin@example.com
+   
     PGADMIN_DEFAULT_PASSWORD=admin
 
 5. Запуск проекта: docker-compose up
